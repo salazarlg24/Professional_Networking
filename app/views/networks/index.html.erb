@@ -1,0 +1,43 @@
+<div style="padding: 10px;">
+	<h2 style="display: inline-block;"> Welcome, <%= @user.name %></h2>
+	<a style="margin-left: 500px;" href="/users">All Users</a> | <a href="/logout">Log Out</a>
+	<p>Edit Profile <a href="/users/<%= @user.id%>/edit">Here</a></p>
+	<br>
+	<p>Here is your profile description:</p>
+	<div style="border: 2px solid black; width: 200px; height: 75px; padding: 5px; overflow: scroll; ">
+		<p style="margin: 0;"><%= @user.description %> </p>
+	</div>
+
+	<br>
+
+	<p>Your Professional Network:</p>
+	<div style="border: 2px solid black; width: 150px; height: 150px; padding: 30px; overflow: scroll; ">
+		<% @friends.each do |friend|%>
+			<p style="margin: 0;"><a href="/users/<%= friend.friend.id %>"><%= friend.friend.name%></a></p>
+		<% end %>
+	</div>
+
+	<br>
+
+	<p>Invitations:</p>
+	<h5>The follwoing people asked you to be in their network:</h5>
+	<table>
+		<tr>
+			<th style="width: 200px">Name</th>
+			<th style="width: 300px">Action</th>
+		</tr>
+		<% @invitations.each do |pending|%>
+					<tr>
+						<td style="text-align: center;"><a href="/users/<%= pending.inviter.id %>"><%= pending.inviter.name %></a></td>
+						<td style="text-align: center;">
+							<p><a href="/networks/<%= pending.inviter.id %>">Accept Invite</a> | 
+							<a href="/pendings"> Ignore</a></p>
+						</td>
+					</tr>
+		<% end %>
+	</table>
+
+
+
+
+</div>

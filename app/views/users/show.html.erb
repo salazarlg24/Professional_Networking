@@ -1,0 +1,24 @@
+<div style="padding: 10px;">
+	<a style="margin-left: 500px;" href="/user_profile/">My Profile</a> | <a href="/logout">Log Out</a>
+	<br>
+	<p>Users you may want to connect with:</p>
+	<br>
+		<table>
+			<tr>
+				<th style="width: 200px">Name</th>
+				<th style="width: 300px">Action</th>
+			</tr>
+			<% @users.each do |user|%>
+					<%if user.id != @logged_in_user.id %>
+
+					<tr>
+						<td style="text-align: center;"><a href="/users/<%= user.id %>"><%= user.name %></a></td>
+						<td style="text-align: center;">
+							<p><a href="/pendings/<%= user.id %>">Connect</a></p>
+						</td>
+					</tr>
+				
+				<% end %>
+			<% end %>
+		</table>
+</div>

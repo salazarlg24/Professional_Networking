@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProfessionalNetwork</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  
+ 	<% if flash[:errors] %>
+        <% flash[:errors].each do |errs| %>
+        	<p style="color: red"><%= errs %></p>
+        <% end %>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

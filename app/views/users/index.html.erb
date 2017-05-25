@@ -1,0 +1,34 @@
+<div style="text-align: center;">
+	<h1><i>Welcome</i></h1>
+
+
+	<fieldset style="width: 300px; display: inline-block; text-align: left;">
+	<legend style="color: blue;">Register</legend>
+
+	<form action="/register" method="post">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		
+		<p><input type="text" name="name" placeholder="Name"></p>
+		<p><input type="text" name="email" placeholder="Email"></p>
+		<p><input type="password" name="password" placeholder="Password"></p>
+		<p><input type="password" name="password_confirmation" placeholder="Password Confirmation"></p>
+		<p><textarea type="text" name="description" placeholder="Description"></textarea></p>
+		<p><input type="submit" value="Register"></p>
+	</form>
+	</fieldset>
+
+	<fieldset style="width: 300px; display: inline-block; vertical-align: top">
+		<legend style="color: blue;">Log In</legend>
+
+		<% if flash[:error] %>
+			<p style="color: red"><%= flash[:error] %></p>
+		<% end %>
+
+		<form action="/login" method="post">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<p><input type="text" name="email" placeholder="Email"></p>
+			<p><input type="password" name="password" placeholder="Password"></p>
+			<p><input type="submit" value="Log In"></p>
+		</form>
+		</fieldset>
+</div>

@@ -1,0 +1,19 @@
+<div style="padding: 10px;">
+	<a style="margin-left: 500px;" href="/user_profile/">My Profile</a> | <a href="/logout">Log Out</a>
+	<br>
+	<h1>Editing <%= @user.name %></h1>
+
+	<fieldset style="width: 300px; display: inline-block; text-align: left;">
+	<legend style="color: blue;">Update Info</legend>
+
+	<form action="/users" method="post">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<input type="hidden" name="_method" value="patch">
+		
+		<p><input type="text" name="name" value="<%= @user.name%>"></p>
+		<p><input type="text" name="email" value="<%= @user.email%>"></p>
+		<p><textarea type="text" name="description" ><%= @user.description %></textarea></p>
+		<p><input type="submit" value="Update"></p>
+	</form>
+	</fieldset>
+</div>
